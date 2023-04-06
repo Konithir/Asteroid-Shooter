@@ -14,4 +14,9 @@ public class BulletController : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
 }

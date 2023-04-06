@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55791e4fabdc81c44904e6545836d04b, type: 3}
-  m_Name: BigAsteroid
+  m_Name: SmallAsteroidType
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 0}
-  _points: 0
-  _size: {x: 0, y: 0}
+  _sprite: {fileID: 21300000, guid: a3e42735bf44e044ca94d028c05e7f0d, type: 3}
+  _points: 1
+  _size: {x: 50, y: 50}
