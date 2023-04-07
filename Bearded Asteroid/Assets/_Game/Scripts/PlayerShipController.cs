@@ -91,7 +91,6 @@ public class PlayerShipController : MonoBehaviour
         _currentBullet.transform.DOMove(transform.position - (transform.right * _bulletSpeed), BULLET_TWEEN_TIME).SetEase(Ease.Linear);
 
         _currentBullet.gameObject.SetActive(true);
-        _currentBullet.DeativationCountDown();
     }
 
     private BulletController FindFirstInactive(List<BulletController> list)

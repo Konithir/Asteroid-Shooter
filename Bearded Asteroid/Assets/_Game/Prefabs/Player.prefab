@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _bulletSpeed: 5
+  _bulletSpeed: 1
   _bulletInitialOffset: 0
   _bulletList:
   - {fileID: 0}

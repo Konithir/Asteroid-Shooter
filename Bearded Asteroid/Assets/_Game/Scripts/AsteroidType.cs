@@ -10,7 +10,7 @@ public class AsteroidType : ScriptableObject
     private int _points;
 
     [SerializeField]
-    private Vector2 _size;
+    private Vector3 _scale;
 
     public Sprite Sprite
     {
@@ -22,8 +22,8 @@ public class AsteroidType : ScriptableObject
         get { return _points; }
     }
 
-    public Vector2 Size
+    public Vector3 Scale
     {
-        get { return _size; }
+        get { return _scale; }
     }
 }

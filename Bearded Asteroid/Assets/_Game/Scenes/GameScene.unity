@@ -3677,6 +3677,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60276d13fb210fe4dab4b6b20ce87183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &762453062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6704203184422532629, guid: 42244c9b4a2c7b4409530ebab259ea76,
+    type: 3}
+  m_PrefabInstance: {fileID: 6704203185468780424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &768261268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6229,6 +6235,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6704203185468780424}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &1180998048
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762453062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 40
+  m_Center: {x: 5, y: 0, z: 0}
+--- !u!54 &1180998049
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762453062}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1199630869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7278,11 +7313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f75aba9ce9f0f44a183675a46e1cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroidSpeedMinValue: 2
-  _asteroidSpeedMaxValue: 5
+  _asteroidSpeedMinValue: 4
+  _asteroidSpeedMaxValue: 15
   _maxScreenAsteroidCount: 30
   _initialAstroidSpawnTime: 1
-  _intervalAsteroidSpawnTime: 2
+  _intervalAsteroidSpawnTime: 0.75
   _asteroidList:
   - {fileID: 1154688174}
   - {fileID: 2050687654}
@@ -7305,6 +7340,10 @@ MonoBehaviour:
   - {fileID: 895815905}
   - {fileID: 827586885}
   - {fileID: 1971925709}
+  _asteroidTypes:
+  - {fileID: 11400000, guid: 6aabfbf16808c02489833f60b53af0cc, type: 2}
+  - {fileID: 11400000, guid: b4f28f349c73c3648bb1cf7d4405a4ec, type: 2}
+  - {fileID: 11400000, guid: 291f8943fd307374d8d83e23d936bc23, type: 2}
   _spawnPoints:
   - {fileID: 4044470494637814937}
   - {fileID: 1254408214}
@@ -11026,7 +11065,7 @@ PrefabInstance:
     - target: {fileID: 6704203184422532631, guid: 42244c9b4a2c7b4409530ebab259ea76,
         type: 3}
       propertyPath: _bulletSpeed
-      value: 2000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 6704203184422532631, guid: 42244c9b4a2c7b4409530ebab259ea76,
         type: 3}

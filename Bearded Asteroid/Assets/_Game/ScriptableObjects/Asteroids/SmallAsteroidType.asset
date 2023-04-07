@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SmallAsteroidType
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: a3e42735bf44e044ca94d028c05e7f0d, type: 3}
-  _points: 1
-  _size: {x: 50, y: 50}
+  _points: 10
+  _scale: {x: 1, y: 1, z: 1}

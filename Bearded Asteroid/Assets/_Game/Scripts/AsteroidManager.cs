@@ -29,6 +29,9 @@ public class AsteroidManager : MonoBehaviour
     private List<AsteroidController> _asteroidList;
 
     [SerializeField]
+    private List<AsteroidType> _asteroidTypes;
+
+    [SerializeField]
     private List<SpawnPointController> _spawnPoints;
 
     private AsteroidController _currentAsteroid;
@@ -47,6 +50,7 @@ public class AsteroidManager : MonoBehaviour
             return;
 
         _currentAsteroid = FindFirstInactive(_asteroidList);
+        _currentAsteroid.Type = GetRandomAsteroidType();
 
         SetTwoSpawnPointsFromDifferentTypes();
 
@@ -99,6 +103,11 @@ public class AsteroidManager : MonoBehaviour
         }
 
         return _tempAsteroidInt;
+    }
+
+    private AsteroidType GetRandomAsteroidType()
+    {
+        return _asteroidTypes[Random.Range(0, _asteroidTypes.Count)];
     }
 
    

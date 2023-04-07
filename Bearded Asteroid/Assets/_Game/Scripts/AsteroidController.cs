@@ -13,20 +13,27 @@ public class AsteroidController : MonoBehaviour
     [SerializeField]
     private Image _renderer;
 
-    [SerializeField]
-    private RectTransform _rectTransform;
-
     private float _randomizedTime;
+
+    public AsteroidType Type
+    {
+        set { _type = value; }
+    }
 
     private void OnEnable()
     {
         Init();
     }
 
+    private void OnDisable()
+    {
+        StopTweens();
+    }
+
     private void Init()
     {
         _renderer.sprite = _type.Sprite;
-        _rectTransform.sizeDelta = _type.Size;
+        transform.localScale = _type.Scale;
     }
 
     public void HandleMovement(Vector3 destination, float minTime, float maxTime)
@@ -39,5 +46,23 @@ public class AsteroidController : MonoBehaviour
     public void OnAsteroidPathEnd()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        HandleColisions(other);
+    }
+
+    private void HandleColisions(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void StopTweens()
+    {
+        DOTween.Kill(transform);
     }
 }
