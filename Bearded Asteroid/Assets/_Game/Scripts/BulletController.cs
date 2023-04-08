@@ -6,6 +6,8 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private float deactivationTime;
 
+    private AsteroidController _currentlyHitAsteroid;
+
     private void OnEnable()
     {
         Invoke(nameof(Deactivation), deactivationTime);
@@ -33,6 +35,11 @@ public class BulletController : MonoBehaviour
         {
             collider.gameObject.SetActive(false);
             gameObject.SetActive(false);
+
+            _currentlyHitAsteroid = collider.gameObject.GetComponent<AsteroidController>();
+            GameManager.Singleton.PlayerStats.Score += _currentlyHitAsteroid.Type.Point;
+
+            GameManager.Singleton.OnPointChange?.Invoke();
         }
     }
 

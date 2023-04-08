@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/SpawnPoint/SpawnPointType")]
+[CreateAssetMenu(menuName = "Bearded_Asteroid/SpawnPoint/SpawnPointType")]
 public class SpawnPointType : ScriptableObject
 {
     [SerializeField]

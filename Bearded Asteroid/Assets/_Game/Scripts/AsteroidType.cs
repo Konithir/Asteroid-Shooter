@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu( menuName = "ScriptableObjects/Asteroids/AsteroidType")]
+[CreateAssetMenu( menuName = "Bearded_Asteroid/Asteroids/AsteroidType")]
 public class AsteroidType : ScriptableObject
 {
     [SerializeField]

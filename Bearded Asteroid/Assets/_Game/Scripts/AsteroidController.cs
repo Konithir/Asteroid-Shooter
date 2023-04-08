@@ -17,6 +17,7 @@ public class AsteroidController : MonoBehaviour
 
     public AsteroidType Type
     {
+        get { return _type; }
         set { _type = value; }
     }
 
@@ -58,6 +59,15 @@ public class AsteroidController : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             gameObject.SetActive(false);
+
+            GameManager.Singleton.PlayerStats.Lives--;
+
+            GameManager.Singleton.OnDamageReceived?.Invoke();
+
+            if(GameManager.Singleton.PlayerStats.Lives == 0)
+            {
+                //End Game
+            }
         }
     }
 

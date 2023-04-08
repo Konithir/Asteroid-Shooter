@@ -1,0 +1,10 @@
+using System;
+using UnityEngine;
+
+    #ROOTNAMESPACEBEGIN#
+[CreateAssetMenu(menuName = "Bearded_Asteroid/SYSTEM_NAME/ScriptableObject Name")]
+public class #SCRIPTNAME# : ScriptableObject
+{
+
+}
+#ROOTNAMESPACEEND#
