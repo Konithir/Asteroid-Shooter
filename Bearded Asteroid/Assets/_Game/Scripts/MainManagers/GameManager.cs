@@ -25,5 +25,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _singleton = this;
+
+        Reset();
+    }
+
+    private void Reset()
+    {
+        _playerStats.Reset();
     }
 }

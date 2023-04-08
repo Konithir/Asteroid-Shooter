@@ -13,6 +13,12 @@ public class AsteroidController : MonoBehaviour
     [SerializeField]
     private Image _renderer;
 
+    [SerializeField]
+    private Vector3 _teleportPoint;
+
+    [SerializeField]
+    private LoadSceneController _loadSceneController;
+
     private float _randomizedTime;
 
     public AsteroidType Type
@@ -60,13 +66,17 @@ public class AsteroidController : MonoBehaviour
         {
             gameObject.SetActive(false);
 
+            collider.gameObject.SetActive(false);
+            collider.transform.localPosition = _teleportPoint;
+            collider.gameObject.SetActive(true);
+
             GameManager.Singleton.PlayerStats.Lives--;
 
             GameManager.Singleton.OnDamageReceived?.Invoke();
 
-            if(GameManager.Singleton.PlayerStats.Lives == 0)
+            if(GameManager.Singleton.PlayerStats.Lives <= 0)
             {
-                //End Game
+                _loadSceneController.LoadScene();
             }
         }
     }

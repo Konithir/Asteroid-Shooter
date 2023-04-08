@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 113689364282858002}
   - component: {fileID: -2775409820490434124}
   - component: {fileID: 103795468920210303}
+  - component: {fileID: 293127947259274790}
   m_Layer: 5
   m_Name: Asteroid
   m_TagString: Asteroid
@@ -131,7 +132,8 @@ MonoBehaviour:
   _type: {fileID: 11400000, guid: 291f8943fd307374d8d83e23d936bc23, type: 2}
   _rotateValue: {x: 0, y: 0, z: 160}
   _renderer: {fileID: 5262733440583507109}
-  _rectTransform: {fileID: 26867938542044567}
+  _teleportPoint: {x: 0, y: 0, z: 0}
+  _loadSceneController: {fileID: 293127947259274790}
 --- !u!135 &-2775409820490434124
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -161,6 +163,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &293127947259274790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813456199744630878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc360b66fef8a0419181f46ce0e031e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: EndGameScene
 --- !u!1 &5830141665565644919
 GameObject:
   m_ObjectHideFlags: 0

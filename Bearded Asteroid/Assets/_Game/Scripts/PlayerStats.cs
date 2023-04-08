@@ -18,6 +18,7 @@ public class PlayerStats : ScriptableObject
     public string Name
     {
         get { return _name; }
+        set { _name = value; }
     }
 
     public int Score
@@ -36,5 +37,12 @@ public class PlayerStats : ScriptableObject
     {
         get { return _level; }
         set { _level = value; }
+    }
+
+    public void Reset()
+    {
+        _score = 0;
+        _lives = 3;
+        _level = 1;
     }
 }

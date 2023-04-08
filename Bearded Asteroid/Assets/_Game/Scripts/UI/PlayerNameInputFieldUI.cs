@@ -18,4 +18,9 @@ public class PlayerNameInputFieldUI : MonoBehaviour
     {
         _inputField.text = _player.Name;
     }
+
+    public void SaveTypedName()
+    {
+        _player.Name = _inputField.text;
+    }
 }

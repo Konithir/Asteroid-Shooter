@@ -18,6 +18,9 @@ public class GameInfoUIControler : MonoBehaviour
     private void Start()
     {
         SubscribeToEvents();
+
+        UpdateScore();
+        UpdateLives();
     }
 
     private void SubscribeToEvents()

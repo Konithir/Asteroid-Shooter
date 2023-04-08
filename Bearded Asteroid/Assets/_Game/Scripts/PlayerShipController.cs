@@ -39,6 +39,11 @@ public class PlayerShipController : MonoBehaviour
         CompleteMovement();
     }
 
+    private void OnDisable()
+    {
+        StopTweens();
+    }
+
     private void PrepareMovementVector()
     {
         _movementVector = Vector3.zero;
@@ -105,5 +110,10 @@ public class PlayerShipController : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void StopTweens()
+    {
+        DOTween.Kill(transform);
     }
 }
