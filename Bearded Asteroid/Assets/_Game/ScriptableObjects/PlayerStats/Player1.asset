@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Player1
   m_EditorClassIdentifier: 
   _name: Player 1
-  _score: 0
+  _score: 5
   _lives: 3
+  _level: 1
