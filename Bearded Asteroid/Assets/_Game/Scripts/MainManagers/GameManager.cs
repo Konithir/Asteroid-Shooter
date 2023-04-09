@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private LevelManager _levelManager;
 
+    [SerializeField]
+    private PlayerShipController _playerShipController;
+
     private static GameManager _singleton;
 
     public UnityEvent OnPointChange;
@@ -29,6 +32,11 @@ public class GameManager : MonoBehaviour
     public PlayerStats PlayerStats
     {
         get { return _playerStats; }
+    }
+
+    public PlayerShipController PlayerShipController
+    {
+        get { return _playerShipController; }
     }
 
     private void Awake()

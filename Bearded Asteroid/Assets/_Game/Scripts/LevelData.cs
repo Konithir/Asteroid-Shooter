@@ -54,4 +54,9 @@ public class LevelData : ScriptableObject
     {
         get { return _enemiesTypes; }
     }
+
+    public void Reset()
+    {
+        _currentEnemiesCountKilled = 0;
+    }
 }

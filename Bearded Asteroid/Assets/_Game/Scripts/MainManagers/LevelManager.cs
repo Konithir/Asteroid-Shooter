@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         SetCurrentLeveData();
+        ResetLevelData();
     }
 
     private void Start()
@@ -34,6 +35,14 @@ public class LevelManager : MonoBehaviour
     private void SetCurrentLeveData()
     {
         _currentLevelData = _levelDatas[0];
+    }
+
+    private void ResetLevelData()
+    {
+        for(int i = 0; i < _levelDatas.Count; i++)
+        {
+            _levelDatas[i].Reset();
+        }
     }
 
     public void ProgressNextLevel()

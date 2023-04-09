@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,14 +18,35 @@ public class PlayerShipController : MonoBehaviour
     private float _bulletInitialOffset;
 
     [SerializeField]
+    private Animation _deathEffect;
+
+    [SerializeField]
+    private GameObject _graphic;
+
+    [SerializeField]
     private List<BulletController> _bulletList;
 
+    [SerializeField]
+    private float _deathWaitTime;
+
+    [SerializeField]
+    private Vector3 _teleportPoint;
+
+    [SerializeField]
+    private SphereCollider _collider;
+
+    private WaitForSeconds _waitForSeconds;
     private Vector3 _movementVector;
     private Vector3 _mousePositionDifference;
     private float _rotationZ;
     private BulletController _currentBullet;
 
     private const float BULLET_TWEEN_TIME = 2;
+
+    private void Start()
+    {
+        Init();
+    }
 
     private void Update()
     {
@@ -70,7 +92,7 @@ public class PlayerShipController : MonoBehaviour
 
     private void CompleteMovement()
     {
-        transform.DOMove(transform.position + (_movementVector * _speed), Time.deltaTime);
+        transform.DOMove(transform.position + (_movementVector * _speed * Time.deltaTime), Time.deltaTime);
     }
 
     private void RotateToCursor()
@@ -114,5 +136,52 @@ public class PlayerShipController : MonoBehaviour
     private void StopTweens()
     {
         DOTween.Kill(transform);
+    }
+
+    private void Init()
+    {
+        _waitForSeconds = new WaitForSeconds(_deathWaitTime);
+    }
+
+    public void PlayDeathEffect()
+    {
+        _deathEffect.Play();
+    }
+
+    public void DisableGraphic()
+    {
+        _graphic.SetActive(false);
+        SwitchCollider(false);
+    }
+
+    public void EnableGraphic()
+    {
+        _graphic.SetActive(true);
+        SwitchCollider(true);
+    }
+
+    public void RespawnShip()
+    {
+        StartCoroutine(RespawnShipCoroutine());
+    }
+
+    private IEnumerator RespawnShipCoroutine()
+    {
+        yield return _waitForSeconds;
+
+        EnableGraphic();
+        TeleportShipToPoint();
+    }
+
+    public void TeleportShipToPoint()
+    {
+        gameObject.SetActive(false);
+        transform.localPosition = _teleportPoint;
+        gameObject.SetActive(true);
+    }
+
+    private void SwitchCollider(bool value)
+    {
+        _collider.enabled = value;
     }
 }
