@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private PlayerStats _playerStats;
+
+    [SerializeField]
+    private LevelManager _levelManager;
 
     private static GameManager _singleton;
 
@@ -15,6 +19,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Singleton
     {
         get { return _singleton; }
+    }
+
+    public LevelManager LevelManger
+    {
+        get { return _levelManager; }
     }
 
     public PlayerStats PlayerStats

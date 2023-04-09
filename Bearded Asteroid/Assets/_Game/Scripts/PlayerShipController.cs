@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerShipController : MonoBehaviour
 {
-
     [Tooltip("Player Speed Per Delta Time")]
     [SerializeField]
     private float _speed;

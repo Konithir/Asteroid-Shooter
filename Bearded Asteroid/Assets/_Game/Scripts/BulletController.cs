@@ -39,6 +39,14 @@ public class BulletController : MonoBehaviour
             _currentlyHitAsteroid = collider.gameObject.GetComponent<AsteroidController>();
             GameManager.Singleton.PlayerStats.Score += _currentlyHitAsteroid.Type.Point;
 
+            GameManager.Singleton.LevelManger.CurrentLevelData.CurrentEnemiesCountKilled++;
+
+            if(GameManager.Singleton.LevelManger.CurrentLevelData.CurrentEnemiesCountKilled >= GameManager.Singleton.LevelManger.CurrentLevelData.EnemiesCount)
+            {
+                GameManager.Singleton.LevelManger.ProgressNextLevel();
+            }
+
+
             GameManager.Singleton.OnPointChange?.Invoke();
         }
     }

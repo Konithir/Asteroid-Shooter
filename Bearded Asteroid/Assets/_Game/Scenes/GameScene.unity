@@ -2839,8 +2839,9 @@ GameObject:
   m_Component:
   - component: {fileID: 494714955}
   - component: {fileID: 494714954}
+  - component: {fileID: 494714956}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2859,6 +2860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 11400000, guid: 1e79f28e2548a844f80d06506d5bb1c7, type: 2}
+  _levelManager: {fileID: 494714956}
   OnPointChange:
     m_PersistentCalls:
       m_Calls: []
@@ -2880,6 +2882,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &494714956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494714953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d623954cd681134d9d40b7380959070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelDatas:
+  - {fileID: 11400000, guid: 32eeea039c626be42b2ad7ac0278d7dc, type: 2}
+  - {fileID: 11400000, guid: 54e8759cc69ece4498955f4602d07a86, type: 2}
+  - {fileID: 11400000, guid: a6bf5f7863353084bad6713b309fcdf0, type: 2}
+  - {fileID: 11400000, guid: 478c32f0089439e4dbb4be06997353b4, type: 2}
+  - {fileID: 11400000, guid: ac2eed8a6aff7af4c8b5101abfccfeb2, type: 2}
 --- !u!1001 &497612776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8201,11 +8221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f75aba9ce9f0f44a183675a46e1cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroidSpeedMinValue: 4
-  _asteroidSpeedMaxValue: 15
-  _maxScreenAsteroidCount: 30
-  _initialAstroidSpawnTime: 1
-  _intervalAsteroidSpawnTime: 0.75
   _asteroidList:
   - {fileID: 1154688174}
   - {fileID: 2050687654}

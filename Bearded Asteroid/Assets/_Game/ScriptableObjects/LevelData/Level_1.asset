@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55791e4fabdc81c44904e6545836d04b, type: 3}
-  m_Name: SmallAsteroidType
+  m_Script: {fileID: 11500000, guid: a6dda34056fd65f4fb85de116e2f956b, type: 3}
+  m_Name: Level_1
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 21300000, guid: a3e42735bf44e044ca94d028c05e7f0d, type: 3}
-  _points: 10
-  _scale: {x: 1, y: 1, z: 1}
+  _levelName: 1
+  _initialAstroidSpawnTime: 2
+  _intervalAsteroidSpawnTime: 1
+  _enemiesCountToKill: 15
+  _enemiesTypes:
+  - {fileID: 11400000, guid: 6aabfbf16808c02489833f60b53af0cc, type: 2}

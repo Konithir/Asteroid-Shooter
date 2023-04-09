@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55791e4fabdc81c44904e6545836d04b, type: 3}
-  m_Name: MediumAsteroidtype
+  m_Name: BigAsteroidType
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 21300000, guid: 37b0071da78601243827b0ebf9d847ce, type: 3}
-  _points: 5
-  _scale: {x: 1.5, y: 1.5, z: 1.5}
+  _sprite: {fileID: 21300000, guid: 6ae4ad63dd93c8a46bbca26f00685d7c, type: 3}
+  _points: 100
+  _scale: {x: 2, y: 2, z: 2}
+  _speedMinValue: 5
+  _speedMaxValue: 9
+  _rotationMinValue: 0
+  _rotationMaxValue: 60

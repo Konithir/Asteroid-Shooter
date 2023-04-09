@@ -5,10 +5,7 @@ using UnityEngine.UI;
 public class AsteroidController : MonoBehaviour
 {
     [SerializeField]
-    private AsteroidType _type;
-
-    [SerializeField]
-    private Vector3 _rotateValue;
+    private EnemyType _type;
 
     [SerializeField]
     private Image _renderer;
@@ -19,9 +16,10 @@ public class AsteroidController : MonoBehaviour
     [SerializeField]
     private LoadSceneController _loadSceneController;
 
-    private float _randomizedTime;
+    private float _randomizedSpeedTime;
+    private Vector3 _randomizedRotation;
 
-    public AsteroidType Type
+    public EnemyType Type
     {
         get { return _type; }
         set { _type = value; }
@@ -43,11 +41,13 @@ public class AsteroidController : MonoBehaviour
         transform.localScale = _type.Scale;
     }
 
-    public void HandleMovement(Vector3 destination, float minTime, float maxTime)
+    public void HandleMovement(Vector3 destination, EnemyType type)
     {
-        _randomizedTime = Random.Range(minTime, maxTime);
-        transform.DOMove(destination, _randomizedTime).SetEase(Ease.InSine).OnComplete(() => OnAsteroidPathEnd());
-        transform.DOBlendableRotateBy(_rotateValue, _randomizedTime).SetEase(Ease.Linear);
+        _randomizedSpeedTime = Random.Range(type.SpeedMinValue, type.SpeedMaxValue);
+        _randomizedRotation = new Vector3(0,0,Random.Range(type.RotationMinValue, type.RotationMaxValue));
+
+        transform.DOMove(destination, _randomizedSpeedTime).SetEase(Ease.InSine).OnComplete(() => OnAsteroidPathEnd());
+        transform.DOBlendableRotateBy(_randomizedRotation, _randomizedSpeedTime).SetEase(Ease.Linear);
     }
 
     public void OnAsteroidPathEnd()
