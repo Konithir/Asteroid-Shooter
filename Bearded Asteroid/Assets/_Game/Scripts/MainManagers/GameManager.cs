@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     private LevelManager _levelManager;
 
     [SerializeField]
+    private BulletManager _bulletManager;
+
+    [SerializeField]
     private PlayerShipController _playerShipController;
 
     private static GameManager _singleton;
@@ -37,6 +40,11 @@ public class GameManager : MonoBehaviour
     public PlayerShipController PlayerShipController
     {
         get { return _playerShipController; }
+    }
+
+    public BulletManager BulletManager
+    {
+        get { return _bulletManager; }
     }
 
     private void Awake()

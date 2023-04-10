@@ -26,6 +26,9 @@ public class EnemyType : ScriptableObject
     [SerializeField]
     private float _rotationMaxValue;
 
+    [SerializeField]
+    private bool _shootsBullets;
+
     public Sprite Sprite
     {
         get { return _sprite; }
@@ -59,5 +62,10 @@ public class EnemyType : ScriptableObject
     public float RotationMaxValue
     {
         get { return _rotationMaxValue; }
+    }
+
+    public bool ShootsBullets
+    {
+        get { return _shootsBullets; }
     }
 }

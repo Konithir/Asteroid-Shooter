@@ -6,7 +6,13 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private float deactivationTime;
 
-    private AsteroidController _currentlyHitAsteroid;
+    private BasicEnemyController _currentlyHitAsteroid;
+    private BulletOwnerEnum _bulletOwner;
+
+    public BulletOwnerEnum BulletOwner
+    {
+        set { _bulletOwner = value;  }
+    }
 
     private void OnEnable()
     {
@@ -31,12 +37,12 @@ public class BulletController : MonoBehaviour
 
     private void HandleColisions(Collider collider)
     {
-        if(collider.CompareTag("Asteroid"))
+        if(_bulletOwner == BulletOwnerEnum.Player && collider.CompareTag("Asteroid"))
         {
             collider.gameObject.SetActive(false);
             gameObject.SetActive(false);
 
-            _currentlyHitAsteroid = collider.gameObject.GetComponent<AsteroidController>();
+            _currentlyHitAsteroid = collider.gameObject.GetComponent<BasicEnemyController>();
             GameManager.Singleton.PlayerStats.Score += _currentlyHitAsteroid.Type.Point;
 
             GameManager.Singleton.LevelManger.CurrentLevelData.CurrentEnemiesCountKilled++;
@@ -46,9 +52,14 @@ public class BulletController : MonoBehaviour
                 GameManager.Singleton.LevelManger.ProgressNextLevel();
             }
 
-
             GameManager.Singleton.OnPointChange?.Invoke();
         }
+        else if(_bulletOwner == BulletOwnerEnum.Enemy && collider.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+            GameManager.Singleton.PlayerShipController.HandleDeath();
+        }
+
     }
 
     private void StopTweens()
@@ -59,5 +70,10 @@ public class BulletController : MonoBehaviour
     private void CancelDeactivationInvoke()
     {
         CancelInvoke();
+    }
+
+    private void SetBulletOwner(BulletOwnerEnum owner)
+    {
+        _bulletOwner = owner;
     }
 }

@@ -4,12 +4,16 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField]
-    private List<AsteroidController> _blankEnemyList;
+    private List<BasicEnemyController> _blankEnemyList;
+
+    [SerializeField]
+    private List<ShootingEnemyController> _blankShootingEnemyList;
 
     [SerializeField]
     private List<SpawnPointController> _spawnPoints;
 
-    private AsteroidController _currentEnemy;
+    private EnemyType _currentEnemyType;
+    private BasicEnemyController _currentEnemy;
     private SpawnPointController _currentSpawnPoint_start;
     private SpawnPointController _currentSpawnPoint_end;
     private int _tempAsteroidInt;
@@ -39,8 +43,14 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnAsteroid()
     {
-        _currentEnemy = FindFirstInactive(_blankEnemyList);
-        _currentEnemy.Type = GetRandomAsteroidType(GameManager.Singleton.LevelManger.CurrentLevelData);
+        _currentEnemyType = GetRandomEnemyType(GameManager.Singleton.LevelManger.CurrentLevelData);
+
+        if(_currentEnemyType.ShootsBullets)
+            _currentEnemy = FindFirstInactive(_blankShootingEnemyList);
+        else
+            _currentEnemy = FindFirstInactive(_blankEnemyList);
+
+        _currentEnemy.Type = _currentEnemyType;
 
         SetTwoSpawnPointsFromDifferentTypes();
 
@@ -51,7 +61,20 @@ public class EnemyManager : MonoBehaviour
 
     }
 
-    private AsteroidController FindFirstInactive(List<AsteroidController> list)
+    private BasicEnemyController FindFirstInactive(List<BasicEnemyController> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (!list[i].gameObject.activeInHierarchy)
+            {
+                return list[i];
+            }
+        }
+
+        return null;
+    }
+
+    private BasicEnemyController FindFirstInactive(List<ShootingEnemyController> list)
     {
         for (int i = 0; i < list.Count; i++)
         {
@@ -80,22 +103,7 @@ public class EnemyManager : MonoBehaviour
         while (_currentSpawnPoint_start.SpawnPointType == _currentSpawnPoint_end.SpawnPointType);
     }
 
-    private int GetActiveAsteroidCount()
-    {
-        _tempAsteroidInt = 0;
-
-        for(int i = 0; i < _blankEnemyList.Count; i++)
-        {
-            if(_blankEnemyList[i].gameObject.activeInHierarchy)
-            {
-                _tempAsteroidInt++;
-            }
-        }
-
-        return _tempAsteroidInt;
-    }
-
-    private EnemyType GetRandomAsteroidType(LevelData data)
+    private EnemyType GetRandomEnemyType(LevelData data)
     {
         return data.EnemiesTypes[Random.Range(0, data.EnemiesTypes.Count)];
     }
@@ -107,6 +115,11 @@ public class EnemyManager : MonoBehaviour
         for(int i = 0; i < _blankEnemyList.Count; i++)
         {
             _blankEnemyList[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < _blankShootingEnemyList.Count; i++)
+        {
+            _blankShootingEnemyList[i].gameObject.SetActive(false);
         }
     }
 

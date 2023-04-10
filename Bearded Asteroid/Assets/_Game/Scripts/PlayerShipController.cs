@@ -9,22 +9,11 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField]
     private float _speed;
 
-    [Tooltip("Bullet Speed Per Bullet LifeTime")]
-    [SerializeField]
-    private float _bulletSpeed;
-
-    [Tooltip("Bullet Initial Offset So Bullet doesn't Appear On Ship")]
-    [SerializeField]
-    private float _bulletInitialOffset;
-
     [SerializeField]
     private Animation _deathEffect;
 
     [SerializeField]
     private GameObject _graphic;
-
-    [SerializeField]
-    private List<BulletController> _bulletList;
 
     [SerializeField]
     private float _deathWaitTime;
@@ -35,13 +24,13 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField]
     private SphereCollider _collider;
 
+    [SerializeField]
+    private LoadSceneController _loadSceneController;
+
     private WaitForSeconds _waitForSeconds;
     private Vector3 _movementVector;
     private Vector3 _mousePositionDifference;
     private float _rotationZ;
-    private BulletController _currentBullet;
-
-    private const float BULLET_TWEEN_TIME = 2;
 
     private void Start()
     {
@@ -50,6 +39,9 @@ public class PlayerShipController : MonoBehaviour
 
     private void Update()
     {
+        if (!_graphic.activeInHierarchy)
+            return;
+
         PrepareMovementVector();
         RotateToCursor();
         HandleFiring();
@@ -57,6 +49,9 @@ public class PlayerShipController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!_graphic.activeInHierarchy)
+            return;
+
         CompleteMovement();
     }
 
@@ -106,31 +101,8 @@ public class PlayerShipController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            ActivateBullet();
+            GameManager.Singleton.BulletManager.ShootBullet(gameObject, BulletOwnerEnum.Player);
         }
-    }
-
-    private void ActivateBullet()
-    {
-        _currentBullet = FindFirstInactive(_bulletList);
-
-        _currentBullet.transform.position = transform.position - (transform.right * _bulletInitialOffset);
-        _currentBullet.transform.DOMove(transform.position - (transform.right * _bulletSpeed), BULLET_TWEEN_TIME).SetEase(Ease.Linear);
-
-        _currentBullet.gameObject.SetActive(true);
-    }
-
-    private BulletController FindFirstInactive(List<BulletController> list)
-    {
-        for(int i = 0; i < list.Count; i++)
-        {
-            if(!list[i].gameObject.activeInHierarchy)
-            {
-                return list[i];
-            }
-        }
-
-        return null;
     }
 
     private void StopTweens()
@@ -190,5 +162,22 @@ public class PlayerShipController : MonoBehaviour
     private void SwitchCollider(bool value)
     {
         _collider.enabled = value;
+    }
+
+    public void HandleDeath()
+    {
+        PlayDeathEffect();
+        DisableGraphic();
+
+        RespawnShip();
+
+        GameManager.Singleton.PlayerStats.Lives--;
+        GameManager.Singleton.OnDamageReceived?.Invoke();
+
+
+        if (GameManager.Singleton.PlayerStats.Lives <= 0)
+        {
+            _loadSceneController.LoadScene();
+        }
     }
 }

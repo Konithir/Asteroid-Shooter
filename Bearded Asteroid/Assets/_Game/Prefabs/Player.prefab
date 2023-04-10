@@ -211,6 +211,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6704203184422532630}
   - component: {fileID: 6704203184422532631}
+  - component: {fileID: 461386711504489141}
+  - component: {fileID: 3642325188798431539}
+  - component: {fileID: 1455191412954951404}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -248,28 +251,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 500
-  _bulletSpeed: 3000
-  _bulletInitialOffset: 10
   _deathEffect: {fileID: 1158082218363225473}
   _graphic: {fileID: 6704203184343616553}
-  _bulletList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _deathWaitTime: 2
+  _teleportPoint: {x: 0, y: 0, z: 0}
+  _collider: {fileID: 3642325188798431539}
+  _loadSceneController: {fileID: 1455191412954951404}
+--- !u!54 &461386711504489141
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704203184422532629}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &3642325188798431539
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704203184422532629}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 40
+  m_Center: {x: 5, y: 0, z: 0}
+--- !u!114 &1455191412954951404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704203184422532629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc360b66fef8a0419181f46ce0e031e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: EndGameScene
 --- !u!1 &8772391495390354366
 GameObject:
   m_ObjectHideFlags: 0

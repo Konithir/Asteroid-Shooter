@@ -13,7 +13,7 @@ public class PlayerStats : ScriptableObject
     private int _lives;
 
     [SerializeField]
-    private int _level;
+    private string _levelAchievedName;
 
     public string Name
     {
@@ -33,16 +33,16 @@ public class PlayerStats : ScriptableObject
         set { _lives = value; }
     }
 
-    public int Level
+    public string LevelAchievedName
     {
-        get { return _level; }
-        set { _level = value; }
+        get { return _levelAchievedName; }
+        set { _levelAchievedName = value; }
     }
 
     public void Reset()
     {
         _score = 0;
         _lives = 3;
-        _level = 1;
+        _levelAchievedName = "1";
     }
 }

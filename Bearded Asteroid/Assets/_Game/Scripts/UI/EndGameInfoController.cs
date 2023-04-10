@@ -29,7 +29,7 @@ public class EndGameInfoController : MonoBehaviour
 
     public void UpdateLives()
     {
-        _levelText.text = _player.Level.ToString();
+        _levelText.text = _player.LevelAchievedName.ToString();
     }
 
     private void UpdateName()

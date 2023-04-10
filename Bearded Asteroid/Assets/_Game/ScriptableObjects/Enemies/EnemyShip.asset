@@ -19,3 +19,4 @@ MonoBehaviour:
   _speedMaxValue: 7
   _rotationMinValue: 0
   _rotationMaxValue: 0
+  _shootsBullets: 1
