@@ -180,6 +180,13 @@ public class PlayerShipController : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void TeleportShipToPoint(Vector3 point)
+    {
+        gameObject.SetActive(false);
+        transform.localPosition = point;
+        gameObject.SetActive(true);
+    }
+
     private void SwitchCollider(bool value)
     {
         _collider.enabled = value;

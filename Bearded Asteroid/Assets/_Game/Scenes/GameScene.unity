@@ -558,7 +558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 119812015}
   m_Layer: 5
-  m_Name: AsteroidList
+  m_Name: EnemyList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -720,7 +720,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (3)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -992,7 +992,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (16)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -1639,7 +1639,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (6)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -2238,7 +2238,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (12)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -2519,7 +2519,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (7)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -3732,7 +3732,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (15)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -3754,6 +3754,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebfc803d04fdf442b26ac360116a744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &674866195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 674866197}
+  - component: {fileID: 674866196}
+  - component: {fileID: 674866198}
+  m_Layer: 0
+  m_Name: GameBounds
+  m_TagString: GameBounds
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &674866196
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674866195}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2560, y: 1440, z: 100}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &674866197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674866195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1291, y: 732, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &674866198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674866195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82cb60d76877c3a4dbe855470a00cd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boxCollider: {fileID: 674866196}
 --- !u!1001 &680051337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4437,7 +4496,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (13)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -4992,7 +5051,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (17)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -5195,7 +5254,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (19)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -5332,7 +5391,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (18)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -5580,7 +5639,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (2)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -5861,7 +5920,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (11)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -6142,7 +6201,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (14)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -6555,7 +6614,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -7092,7 +7151,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (5)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -8219,7 +8278,7 @@ GameObject:
   - component: {fileID: 1501313920}
   - component: {fileID: 1501313919}
   m_Layer: 0
-  m_Name: AsteroidManager
+  m_Name: EnemyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8571,7 +8630,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (9)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -9065,7 +9124,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (4)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -11188,7 +11247,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (10)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -11325,7 +11384,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (20)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -11606,7 +11665,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (1)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -11743,7 +11802,7 @@ PrefabInstance:
     - target: {fileID: 5813456199744630878, guid: e0d5a941f1908524292f5e4f17e3b68a,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid (8)
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d5a941f1908524292f5e4f17e3b68a, type: 3}
@@ -12285,6 +12344,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6704203184422532631, guid: 42244c9b4a2c7b4409530ebab259ea76,
+        type: 3}
+      propertyPath: _collider
+      value: 
+      objectReference: {fileID: 1180998048}
     - target: {fileID: 6704203184422532631, guid: 42244c9b4a2c7b4409530ebab259ea76,
         type: 3}
       propertyPath: _bulletList.Array.data[0]
