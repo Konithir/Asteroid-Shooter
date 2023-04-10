@@ -15,6 +15,9 @@ public class GameInfoUIControler : MonoBehaviour
     [SerializeField]
     private List<Image> _livesImages;
 
+    [SerializeField]
+    private TextMeshProUGUI _levelText;
+
     private void Start()
     {
         SubscribeToEvents();
@@ -27,6 +30,7 @@ public class GameInfoUIControler : MonoBehaviour
     {
         GameManager.Singleton.OnPointChange.AddListener(UpdateScore);
         GameManager.Singleton.OnDamageReceived.AddListener(UpdateLives);
+        GameManager.Singleton.LevelManger.OnNewLevelStarted.AddListener(UpdateLevelName);
     }
 
     public void UpdateScore()
@@ -47,5 +51,10 @@ public class GameInfoUIControler : MonoBehaviour
                 _livesImages[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void UpdateLevelName()
+    {
+        _levelText.text = GameManager.Singleton.LevelManger.CurrentLevelData.LevelName;
     }
 }
