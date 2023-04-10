@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6dda34056fd65f4fb85de116e2f956b, type: 3}
-  m_Name: Level_1
+  m_Script: {fileID: 11500000, guid: 2a8f01f623cdc524b8891060aab5a131, type: 3}
+  m_Name: MediumAsteroidWrapper_15
   m_EditorClassIdentifier: 
-  _levelName: 1
-  _initialEnemySpawnTime: 1
-  _intervalEnemySpawnTime: 1.5
-  _enemiesTypes:
-  - {fileID: 11400000, guid: 3af03c25463abdb4abf98d03134bdd0a, type: 2}
+  _enemyAmount: 15
+  _enemyType: {fileID: 11400000, guid: b4f28f349c73c3648bb1cf7d4405a4ec, type: 2}

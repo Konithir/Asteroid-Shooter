@@ -47,6 +47,7 @@ public class BasicEnemyController : MonoBehaviour
     public void OnEnemyPathEnd()
     {
         gameObject.SetActive(false);
+        GameManager.Singleton.LevelManger.CurrentLevelData.NoteEnemyEndOfDeployment(_type);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,6 +60,7 @@ public class BasicEnemyController : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             gameObject.SetActive(false);
+            GameManager.Singleton.LevelManger.CurrentLevelData.NoteEnemyKilled(_type);
             GameManager.Singleton.PlayerShipController.HandleDeath();
         }
     }

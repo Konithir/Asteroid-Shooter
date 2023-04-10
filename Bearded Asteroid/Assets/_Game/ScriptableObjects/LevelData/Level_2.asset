@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Level_2
   m_EditorClassIdentifier: 
   _levelName: 2
-  _initialAstroidSpawnTime: 2
-  _intervalAsteroidSpawnTime: 0.75
-  _enemiesCountToKill: 15
+  _initialEnemySpawnTime: 1
+  _intervalEnemySpawnTime: 1
   _enemiesTypes:
-  - {fileID: 11400000, guid: 6aabfbf16808c02489833f60b53af0cc, type: 2}
-  - {fileID: 11400000, guid: b4f28f349c73c3648bb1cf7d4405a4ec, type: 2}
+  - {fileID: 11400000, guid: 3af03c25463abdb4abf98d03134bdd0a, type: 2}
+  - {fileID: 11400000, guid: 6926538232e582a47abb2c3ffd6ce8fa, type: 2}

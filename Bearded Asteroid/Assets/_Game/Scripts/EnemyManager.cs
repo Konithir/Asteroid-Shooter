@@ -17,6 +17,7 @@ public class EnemyManager : MonoBehaviour
     private SpawnPointController _currentSpawnPoint_start;
     private SpawnPointController _currentSpawnPoint_end;
     private int _tempAsteroidInt;
+    private List<EnemyType> _possibleEnemyTypes = new List<EnemyType>();
 
     private void Awake()
     {
@@ -37,13 +38,18 @@ public class EnemyManager : MonoBehaviour
     private void StartSpawningAsteroids()
     {
         InvokeRepeating(nameof(SpawnAsteroid),
-           GameManager.Singleton.LevelManger.CurrentLevelData.InitialAstroidSpawnTime,
-           GameManager.Singleton.LevelManger.CurrentLevelData.IntervalAsteroidSpawnTime);
+           GameManager.Singleton.LevelManger.CurrentLevelData.InitialEnemySpawnTime,
+           GameManager.Singleton.LevelManger.CurrentLevelData.IntervalEnemySpawnTime);
     }
 
     private void SpawnAsteroid()
     {
-        _currentEnemyType = GetRandomEnemyType(GameManager.Singleton.LevelManger.CurrentLevelData);
+        _currentEnemyType = GetRandomEnemyTypeBelowMaxValue(GameManager.Singleton.LevelManger.CurrentLevelData);
+
+        if(_currentEnemyType == null)
+        {
+            return;
+        }
 
         if(_currentEnemyType.ShootsBullets)
             _currentEnemy = FindFirstInactive(_blankShootingEnemyList);
@@ -58,6 +64,8 @@ public class EnemyManager : MonoBehaviour
         _currentEnemy.HandleMovement(_currentSpawnPoint_end.transform.position, _currentEnemy.Type);
 
         _currentEnemy.gameObject.SetActive(true);
+
+        GameManager.Singleton.LevelManger.CurrentLevelData.NoteEnemyDeployment(_currentEnemyType);
 
     }
 
@@ -103,9 +111,24 @@ public class EnemyManager : MonoBehaviour
         while (_currentSpawnPoint_start.SpawnPointType == _currentSpawnPoint_end.SpawnPointType);
     }
 
-    private EnemyType GetRandomEnemyType(LevelData data)
+    private EnemyType GetRandomEnemyTypeBelowMaxValue(LevelData data)
     {
-        return data.EnemiesTypes[Random.Range(0, data.EnemiesTypes.Count)];
+        _possibleEnemyTypes.Clear();
+
+        for (int i = 0; i < data.EnemiesTypes.Count; i++)
+        {
+            if(data.EnemiesTypes[i].CurrentlyDeployedAmount + data.EnemiesTypes[i].CurrentlyKilledAmount < data.EnemiesTypes[i].EnemyAmount)
+            {
+                _possibleEnemyTypes.Add(data.EnemiesTypes[i].EnemyType);
+            }
+        }
+
+        if(_possibleEnemyTypes.Count > 0)
+        {
+            return _possibleEnemyTypes[Random.Range(0, _possibleEnemyTypes.Count)];
+        }
+
+        return null;
     }
 
     private void ClearEnemies()

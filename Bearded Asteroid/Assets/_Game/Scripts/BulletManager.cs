@@ -38,6 +38,8 @@ public class BulletManager : MonoBehaviour
         _currentBullet = FindFirstInactive(_bulletList);
         _currentBullet.BulletOwner = owner;
 
+        _currentBullet.RecolorBullet();
+
         _currentBullet.transform.position = shootingObject.transform.position - (shootingObject.transform.right * _bulletInitialOffset);
         _currentBullet.transform.DOMove(shootingObject.transform.position - (shootingObject.transform.right * _bulletSpeed), BULLET_TWEEN_TIME).SetEase(Ease.Linear);
 
@@ -48,6 +50,8 @@ public class BulletManager : MonoBehaviour
     {
         _currentBullet = FindFirstInactive(_bulletList);
         _currentBullet.BulletOwner = owner;
+
+        _currentBullet.RecolorBullet();
 
         _currentBullet.transform.position = shootingObject.transform.position - (shootingObject.transform.right * _bulletInitialOffset);
         _currentBullet.transform.DOMove(shootingObject.transform.localPosition - ((shootingObject.transform.localPosition - point).normalized * _bulletSpeed), BULLET_TWEEN_TIME).SetEase(Ease.Linear);

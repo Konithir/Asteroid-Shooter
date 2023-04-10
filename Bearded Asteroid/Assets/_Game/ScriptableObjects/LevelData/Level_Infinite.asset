@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Level_Infinite
   m_EditorClassIdentifier: 
   _levelName: Infinite
-  _initialAstroidSpawnTime: 2
-  _intervalAsteroidSpawnTime: 0.4
-  _enemiesCountToKill: 9999999
+  _initialEnemySpawnTime: 1
+  _intervalEnemySpawnTime: 0.5
   _enemiesTypes:
-  - {fileID: 11400000, guid: ae855a954d529804191917ec11fe8136, type: 2}
+  - {fileID: 11400000, guid: 57f24ff21b07a8041bc2bd3d81fbe308, type: 2}

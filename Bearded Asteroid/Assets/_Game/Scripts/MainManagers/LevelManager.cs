@@ -47,6 +47,7 @@ public class LevelManager : MonoBehaviour
 
     public void ProgressNextLevel()
     {
+        ResetLevelData();
         _currentLevelData = _levelDatas[_levelDatas.IndexOf(_currentLevelData) +1];
         GameManager.Singleton.PlayerStats.LevelAchievedName = _currentLevelData.LevelName;
         OnNewLevelStarted?.Invoke();

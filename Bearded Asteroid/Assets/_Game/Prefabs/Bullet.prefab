@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivationTime: 2
+  _image: {fileID: 2097169078769006089}
 --- !u!54 &-2261499107224669958
 Rigidbody:
   m_ObjectHideFlags: 0

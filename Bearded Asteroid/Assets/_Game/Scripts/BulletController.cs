@@ -1,12 +1,16 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BulletController : MonoBehaviour
 {
     [SerializeField]
     private float deactivationTime;
 
-    private BasicEnemyController _currentlyHitAsteroid;
+    [SerializeField]
+    private Image _image;
+
+    private BasicEnemyController _currentlyHitEnemy;
     private BulletOwnerEnum _bulletOwner;
 
     public BulletOwnerEnum BulletOwner
@@ -42,12 +46,12 @@ public class BulletController : MonoBehaviour
             collider.gameObject.SetActive(false);
             gameObject.SetActive(false);
 
-            _currentlyHitAsteroid = collider.gameObject.GetComponent<BasicEnemyController>();
-            GameManager.Singleton.PlayerStats.Score += _currentlyHitAsteroid.Type.Point;
+            _currentlyHitEnemy = collider.gameObject.GetComponent<BasicEnemyController>();
+            GameManager.Singleton.PlayerStats.Score += _currentlyHitEnemy.Type.Point;
 
-            GameManager.Singleton.LevelManger.CurrentLevelData.CurrentEnemiesCountKilled++;
+            GameManager.Singleton.LevelManger.CurrentLevelData.NoteEnemyKilled(_currentlyHitEnemy.Type);
 
-            if(GameManager.Singleton.LevelManger.CurrentLevelData.CurrentEnemiesCountKilled >= GameManager.Singleton.LevelManger.CurrentLevelData.EnemiesCount)
+            if(GameManager.Singleton.LevelManger.CurrentLevelData.CheckForLevelCleared())
             {
                 GameManager.Singleton.LevelManger.ProgressNextLevel();
             }
@@ -72,8 +76,21 @@ public class BulletController : MonoBehaviour
         CancelInvoke();
     }
 
-    private void SetBulletOwner(BulletOwnerEnum owner)
+    public void SetBulletOwner(BulletOwnerEnum owner)
     {
         _bulletOwner = owner;
+        RecolorBullet();
+    }
+
+    public void RecolorBullet()
+    {
+        if(_bulletOwner == BulletOwnerEnum.Player)
+        {
+            _image.color = Color.green;
+        }
+        else
+        {
+            _image.color = Color.red;
+        }
     }
 }
